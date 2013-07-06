@@ -1,6 +1,7 @@
 
 var should = require('chai').should(),
 	http = require("http");
+	https = require("https");
 
 /*
 							 
@@ -55,5 +56,18 @@ describe("Gets index.html from server", function(){
 	});
 
 });
+
+describe("Authenticated user attempts to login", function(){
+	
+	// authetication is sent via header parameters
+	
+	var options_2 = {
+		hostname : "127.0.0.1",
+		port : "3000",
+		path : "/login",
+		method : "GET",
+		headers : "[{'username':'david','password':'123456'}]"
+	};
+})
 
 
