@@ -27,7 +27,10 @@ var options_1 = {
 var requestIndexPage_noAuth = http.request(options_1, function(res){
 
 	describe("Gets index.html from server", function(res){
-		it("should repond with content-type == 'text/html'", function(res){
+		it("should repond with status code 200", function(res){
+
+		})
+		it("should repond with content-type == 'text/html'", function(){
 			// checks myme-type
 			res.should.be.html;
 		})
