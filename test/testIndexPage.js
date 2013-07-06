@@ -1,49 +1,59 @@
-/*
 
-					request the index page 
-					of the app,this is a 
-					local http request.
-					We'll do the authenticated 
-					request next.
-	
-*/
 var should = require('chai').should(),
 	http = require("http");
 
-var options_1 = {
-	hostname : "127.0.0.1",
-	port : "3000",
-	path : "/index",
-	method : "GET"
-}
-
 /*
-
-					request index.html test
-					-----------------------
+							 
+					request index.html 
+					---------*--------
+					local request for 
+					index.html from 
+					server request
+					with authentication 
+					to follow..
 
 */
 
-var requestIndexPage_noAuth = http.request(options_1, function(res){
+describe("Gets index.html from server", function(){
+	var contentType = "";
 
-	describe("Gets index.html from server", function(res){
-		it("should repond with status code 200", function(res){
+	var options_1 = {
+		hostname : "127.0.0.1",
+		port : "3000",
+		path : "/",
+		method : "GET"
+	};
+	it("should repond with status code 200", function(){
 
-		})
-		it("should repond with content-type == 'text/html'", function(){
-			// checks myme-type
-			res.should.be.html;
-		})
-	})
+		var requestIndexPage_noAuth = http.request(options_1, function(res){
+			console.dir(res.headers);
+			
+			contentType = res.headers['content-type'];
 
-})
+			console.log("Status Code : " + res.statusCode);
 
-requestIndexPage_noAuth.on("error", function(err){
-	if(err) throw err;
-})
+			// reference to http status codes here :
+			// http://httpstatus.es
+		
+			(res.statusCode).should.equal(200);
 
-requestIndexPage_noAuth.on("data", function(datum){
-	console.log(data);
-})
+			res.on("data", function(data){
+				console.log("Got data :: " + data.toString());
+			});
+		});
 
-requestIndexPage_noAuth.end();
+		requestIndexPage_noAuth.on("error", function(err){
+			if(err) throw err;
+		});
+
+		requestIndexPage_noAuth.end();
+
+	});
+
+	it("should respond with correct content type", function(){
+		contentType.should.be.html;
+	});
+
+});
+
+
