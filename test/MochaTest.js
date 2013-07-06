@@ -16,10 +16,13 @@ describe('Array', function(){
 // also install chai since it allows us to 
 // play arround with diff assertion libraries
 // http://chaijs.com/
+// should vs expect vs assert
 
 var should = require('chai').should();
+
 describe("Array#indexOf()", function(){
 	it("should return -1 when value is not presente", function(){
 		([4,5,6]).indexOf(7).should.equal(-1);
 	})
 })
+
