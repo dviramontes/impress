@@ -9,5 +9,11 @@ public/img/psd
 public/img/screenshots
 extras/
 .elasticbeanstalk/
+
 # Used only for testing the README.
 README.html
+results/
+
+# vi/vim swap files.
+.*.swp
+.*.swo

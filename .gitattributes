@@ -1,1 +1,10 @@
-* text
+# Filter text source.
+*.js text filter=notabs
+*.coffee text filter=notabs
+*.bat text filter=notabs
+*.md text filter=notabs
+*.json text filter=notabs
+*.sh text filter=notabs
+*.css text filter=notabs
+*.jade text filter=notabs2
+*.html text filter=notabs2
