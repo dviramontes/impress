@@ -1,0 +1,11 @@
+h1 Edit
+	form(method="POST", action="/users/#{user.name}")
+		input(type="hidden", name="_method", value="PUT")
+		p Name:
+			input#name(type="text", name="name", value="#{user.name}")
+		p Email:
+			input#email(type="email", name="email", value="#{user.email}" )
+		p Password:
+			input#password(type="text", name="password", value="#{user.password}")
+		p: button(type="submit") Update
+
