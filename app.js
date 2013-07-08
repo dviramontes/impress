@@ -5,7 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  , Users = require('./routes/users')
   , http = require('http')
   , mongoose = require('mongoose')
   , path = require('path');
@@ -35,5 +35,12 @@ http.createServer(app).listen(app.get('port'), function(){
 app.get('/', routes.index); // uncommenting this to that 
 // we can have an index page, landing page
 
-app.get('/users', user.list); // and our api will handle
-// this next route , take a look at routes/user.js *
+app.get('/users', Users.list); // and our api will handle
+// this next route , take a look at routes/users.js *
+app.get('/users/create', Users.createUserForm);
+app.post('/users/create/new', Users.createUser);
+app.param('name', Users.username);
+
+
+
+

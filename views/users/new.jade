@@ -1,10 +1,14 @@
-h1 New User
-	form(method="POST", action="/users")
-		p Name:
-			input#name(type="text", name="name")
-		p Email:
-			input#email(type="email", name="email")
-		p Password:
-			input#password(type="text", name="password")
-		p: button(type="submit") Create
+extends ../layout
 
+block content
+	h1 New User
+	//- form(method="POST", action="/users")
+	form(method="POST", action="/users/create/new")
+			p Name:
+				input#name(type="text", name="name")
+			p Email:
+				input#email(type="email", name="email")
+			p Password:
+				input#password(type="text", name="password")
+			p: button(type="submit") Create
+	
