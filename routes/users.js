@@ -1,4 +1,3 @@
-
 /*
 
 			  /USERS RESTFUL API
@@ -20,7 +19,6 @@ var userSchema = new mongoose.Schema({
 var Users = mongoose.model('Users', userSchema);
 
 // and here we go..
-
 var User = {
 
 	list : function(res){
@@ -40,15 +38,14 @@ var User = {
 		// to be contructed there and manipulated with
 		// angular.js 
 
-		Users.find({}, function(err, data) { // query for all objects 
+		Users.find({}, function(err, data) { 
+			// query for all objects 
 	    	return res.render('users/index', { users: data });
 		}); 
 	},
-
 	createUserForm : function(res){
 		return res.render("users/new");
 	},
-
 	addUser : function(req, res){
 		var body = req.body;
 		var newUser = new Users({
@@ -61,18 +58,9 @@ var User = {
 		});
 	},
 	username : function(req, res, next, name){
-		Users.find({name: name}, function(err, user) {
-			if(err){
-				return next(err)
-			} else if(user){
-				// req.user = user;
-				console.log(user);
-				return req.user = data[0];
-				
-			}else{
-				next(new Error("Failed to find/load user"));
-			}
-			
+	
+		Users.find({name: name}, function(err, users) {
+			req.user = users[0];
 			next();
 		});
 	},
@@ -106,10 +94,12 @@ exports.username = function(req, res, next, name){
 	User.username(req, res, next, name);
 }
 
-// 
+// */users/show/:name 
 exports.show = function(req, res){
 	User.show(req, res);
 }
+
+
 // app.get('/users/:name', function (req, res) {
 //   res.render("users/show", { user: req.user } );
 // });
