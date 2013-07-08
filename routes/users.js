@@ -54,14 +54,15 @@ var User = {
 			password: body.password
 		}).save(function (err, user){
 			if (err) return res.json(err);
-			return res.redirect('/users/' + user.name);
+			return res.redirect('users/' + user.name);
 		});
 	},
 	username : function(req, res, next, name){
 	
 		Users.find({name: name}, function(err, users) {
-			req.user = users[0];
 			next();
+			return req.user = users[0];
+			
 		});
 	},
 	show : function(req, res){
