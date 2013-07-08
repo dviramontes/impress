@@ -1,13 +1,29 @@
+# npm modules
 node_modules
+
+# bower compenent installs 
 components
+app/components
+
 dist
+
+# windows hidden
 .tmp
 .sass-cache
-app/components
+
+# mac hidden
 .DS_Store
+
+# large photoshop assets
 public/img/psd
+
+# project screenshots
 public/img/screenshots
+
+# project extras
 extras/
+
+# aws specifi
 .elasticbeanstalk/
 
 # Used only for testing the README.
